@@ -9,7 +9,7 @@ pipeline {
 
 	}
 	stages{
-		stage('Build') {
+		stage('checkOut') {
 			steps{
 				sh "mvn --version"
 				sh "docker version "
@@ -23,18 +23,16 @@ pipeline {
 			}
 		}
 
-		stage('Test') {
+		stage('Build') {
 			steps{
 				
-				echo "Test"
-		
+				sh "mvn test"		
 			}
 		}
 
 		stage('Integration test') {
 			steps{
-			
-				echo "Integration test"
+				sh "mvn failsafe:integration-testfailsafe:verify"
 			}
 		}	
 	}
