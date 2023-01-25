@@ -32,7 +32,7 @@ pipeline {
 
 		stage('Integration test') {
 			steps{
-				sh "mvn failsafe:integration-testfailsafe:verify"
+				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}	
 	}
